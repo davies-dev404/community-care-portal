@@ -1,52 +1,9 @@
+import { Link } from 'react-router-dom';
 import { Calendar, ArrowRight, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-const newsItems = [
-  {
-    category: 'Announcement',
-    date: 'January 5, 2024',
-    title: 'New Cardiac Catheterization Lab Opens',
-    excerpt: 'Our state-of-the-art cardiac catheterization laboratory is now operational, bringing advanced heart care closer to our community.',
-    featured: true,
-  },
-  {
-    category: 'Research',
-    date: 'December 20, 2023',
-    title: 'Clinical Trial for New Cancer Treatment',
-    excerpt: 'HealthCare Regional is participating in a groundbreaking clinical trial for a new immunotherapy treatment for lung cancer.',
-    featured: false,
-  },
-  {
-    category: 'Community',
-    date: 'December 15, 2023',
-    title: 'Free Health Screening Event Success',
-    excerpt: 'Over 500 community members received free health screenings at our annual wellness event held last weekend.',
-    featured: false,
-  },
-  {
-    category: 'Recognition',
-    date: 'December 1, 2023',
-    title: "Top 100 Hospitals Award",
-    excerpt: "We're proud to announce our inclusion in the national Top 100 Hospitals list for the third consecutive year.",
-    featured: false,
-  },
-  {
-    category: 'Technology',
-    date: 'November 25, 2023',
-    title: 'New MRI Technology Reduces Scan Time',
-    excerpt: 'Our radiology department has introduced advanced MRI technology that cuts scan times by 50% while improving image quality.',
-    featured: false,
-  },
-  {
-    category: 'Staff',
-    date: 'November 15, 2023',
-    title: 'Dr. Sarah Chen Joins Oncology Team',
-    excerpt: 'Renowned oncologist Dr. Sarah Chen brings 20 years of experience to our expanding cancer care program.',
-    featured: false,
-  },
-];
+import { newsItems } from '@/data/newsData';
 
 const Newsroom = () => {
   const featuredNews = newsItems.find(item => item.featured);
@@ -57,15 +14,27 @@ const Newsroom = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="healthcare-hero-gradient py-20">
-        <div className="healthcare-container text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground mb-6 animate-slide-up">
-            Newsroom
-          </h1>
-          <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Stay updated with the latest news, announcements, and developments 
-            from HealthCare Regional Medical Center.
-          </p>
+      <section className="relative min-h-[500px] flex items-center">
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2128&auto=format&fit=crop" 
+            alt="Newsroom" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/80 via-teal-800/60 to-transparent mix-blend-multiply" />
+          <div className="absolute inset-0 bg-black/10" />
+        </div>
+
+        <div className="healthcare-container relative z-10 py-20">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight animate-slide-up drop-shadow-lg">
+              Newsroom
+            </h1>
+            <p className="text-lg md:text-xl text-white mb-8 border-l-4 border-teal-300 pl-4 animate-slide-up drop-shadow-md" style={{ animationDelay: '0.1s' }}>
+              Stay updated with the latest news, announcements, and developments 
+              from HealthCare Regional Medical Center.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -73,14 +42,17 @@ const Newsroom = () => {
       {featuredNews && (
         <section className="healthcare-section">
           <div className="healthcare-container">
-            <div className="bg-accent rounded-2xl overflow-hidden">
+            <div className="bg-accent rounded-2xl overflow-hidden shadow-healthcare">
               <div className="grid lg:grid-cols-2">
-                <div className="aspect-video lg:aspect-auto bg-primary/10 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Tag className="h-16 w-16 text-primary opacity-50" />
-                  </div>
+                <div className="aspect-video lg:aspect-auto relative overflow-hidden group">
+                  <img 
+                    src={featuredNews.image} 
+                    alt={featuredNews.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
-                <div className="p-8 md:p-12">
+                <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                       {featuredNews.category}
@@ -96,10 +68,12 @@ const Newsroom = () => {
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     {featuredNews.excerpt}
                   </p>
-                  <Button variant="healthcare">
-                    Read Full Story
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
+                  <Link to={`/news/${featuredNews.id}`}>
+                    <Button variant="healthcare">
+                      Read Full Story
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -122,9 +96,9 @@ const Newsroom = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {regularNews.map((item, index) => (
-              <article key={index} className="healthcare-card group cursor-pointer">
-                <div className="aspect-video bg-accent rounded-lg mb-5 flex items-center justify-center">
-                  <Tag className="h-10 w-10 text-accent-foreground opacity-30" />
+              <article key={index} className="healthcare-card group cursor-pointer flex flex-col h-full">
+                <div className="aspect-video bg-accent rounded-lg mb-5 overflow-hidden">
+                   <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex items-center gap-3 mb-3">
                   <span className="px-2 py-1 bg-accent text-accent-foreground text-xs font-medium rounded">
@@ -135,15 +109,17 @@ const Newsroom = () => {
                     {item.date}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {item.title}
+                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <Link to={`/news/${item.id}`}>
+                    {item.title}
+                  </Link>
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
                   {item.excerpt}
                 </p>
-                <span className="text-primary text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                <Link to={`/news/${item.id}`} className="text-primary text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
                   Read More <ArrowRight className="h-4 w-4" />
-                </span>
+                </Link>
               </article>
             ))}
           </div>

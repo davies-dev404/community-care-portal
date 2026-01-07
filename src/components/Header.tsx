@@ -1,60 +1,9 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Clock, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-
-const specialties = [
-  'Accident & Emergency',
-  'Aesthetic',
-  'Allergy and Immunology',
-  'Anaesthesiology',
-  'Ambulance',
-  'Audiology',
-  'Bariatric Surgery',
-  'Cardiac Sciences',
-  'Child Development Department',
-  'Critical Care and I.C.U',
-  'Dentistry',
-  'Dermatology',
-  'Dietetics and Nutrition',
-  'Endocrinology, Diabetology and Metabolic Disorders',
-  'ENT, Head and Neck Surgery',
-  'Family Medicine',
-  'Foetal Medicine',
-  'Gastroenterology',
-  'Gastrointestinal Surgery',
-  'General and Laparoscopic Surgery',
-  'General Medicine',
-  'Haematology',
-  'Imaging',
-  'Internal Medicine',
-  'Lactation Services',
-  'Maternity',
-  'Midwifery Services',
-  'Neonatology',
-  'Nephrology',
-  'NICU',
-  'Obstetrics & Gynaecology',
-  'Occupational Medicine',
-  'Oncology',
-  'Ophthalmology',
-  'Oral and Maxillofacial Surgery',
-  'Orthopaedics',
-  'P.I.C.U',
-  'Paediatrics',
-  'Pathology & Lab Medicine',
-  'Pharmacy',
-  'Physiotherapy',
-  'Psychiatry',
-  'Psychology',
-  'Pulmonology',
-  'Radiology and Imaging',
-  'Renal/Dialysis',
-  'Rheumatology',
-  'Surgery',
-  'Urgent Care',
-  'Urology and Andrology',
-];
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Phone, Clock, ChevronDown, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { specialtiesData } from "@/data/specialtiesData";
+import logo from '../assets/logo.png';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,21 +16,32 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       {/* Top Bar */}
-      <div className="bg-primary">
+      <div className="bg-[#1e3a8a] text-white">
         <div className="healthcare-container">
-          <div className="flex items-center justify-between py-2 text-sm text-primary-foreground">
+          <div className="flex items-center justify-between py-2 text-sm font-medium">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>Emergency: +1 (555) 123-4567</span>
-              </div>
-              <div className="hidden md:flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>24/7 Emergency Services</span>
+                 <Clock size={16} />
+                 <span className="font-medium">OPENING SOON.</span>
               </div>
             </div>
-            <div className="hidden sm:block">
-              <span>Caring for our community since 1985</span>
+            <div className="flex items-center gap-6">
+              <a
+                href="https://wa.me/254758230000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white/80 transition-colors"
+              >
+                <Phone size={16} />
+                <span className="hidden sm:inline">Support Chat</span>
+              </a>
+              <a
+                href="mailto:career@stelizabethspecialisthospital.org"
+                className="flex items-center gap-2 hover:text-white/80 transition-colors"
+              >
+                <Mail size={16} />
+                <span>Apply Here</span>
+              </a>
             </div>
           </div>
         </div>
@@ -89,49 +49,58 @@ const Header = () => {
 
       {/* Main Navigation */}
       <nav className="healthcare-container">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-start gap-16 py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl healthcare-hero-gradient flex items-center justify-center">
-              <span className="text-2xl font-bold text-primary-foreground">H</span>
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="relative w-12 h-12 flex items-center justify-center">
+              <img src={logo} alt="St. Elizabeth Specialist Hospital Logo" className="w-full h-full object-contain" />
             </div>
-            <div>
-              <h1 className="text-xl font-serif font-semibold text-foreground">HealthCare</h1>
-              <p className="text-xs text-muted-foreground">Regional Medical Center</p>
+            <div className="flex flex-col items-start justify-center">
+              <span className="text-xl font-serif font-bold tracking-tight text-[#1e3a8a] leading-none whitespace-nowrap">
+                St. Elizabeth
+              </span>
+              <span className="text-[0.65rem] font-bold text-red-600 uppercase tracking-widest leading-tight whitespace-nowrap">
+                Specialist Hospital
+              </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-8">
             {/* Home */}
             <Link
               to="/"
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                location.pathname === '/'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+              className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${
+                location.pathname === "/"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-foreground hover:text-primary"
               }`}
             >
               Home
             </Link>
 
             {/* Who We Are Dropdown */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setWhoWeAreOpen(true)}
               onMouseLeave={() => setWhoWeAreOpen(false)}
             >
               <button
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 ${
-                  location.pathname === '/about' || location.pathname === '/doctors'
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-1 whitespace-nowrap ${
+                  location.pathname === "/about" ||
+                  location.pathname === "/doctors"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-foreground hover:text-primary"
                 }`}
               >
-                Who We Are
-                <ChevronDown className={`h-4 w-4 transition-transform ${whoWeAreOpen ? 'rotate-180' : ''}`} />
+                Who we are
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${
+                    whoWeAreOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
-              
+
               {whoWeAreOpen && (
                 <div className="absolute top-full left-0 mt-1 w-56 bg-card rounded-xl shadow-healthcare-lg border border-border py-2 z-50 animate-fade-in">
                   <Link
@@ -151,22 +120,26 @@ const Header = () => {
             </div>
 
             {/* Our Specialties Dropdown */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setSpecialtiesOpen(true)}
               onMouseLeave={() => setSpecialtiesOpen(false)}
             >
               <button
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 ${
-                  location.pathname === '/specialties'
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors flex items-center gap-1 whitespace-nowrap ${
+                  location.pathname === "/specialties"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-foreground hover:text-primary"
                 }`}
               >
                 Our Specialties
-                <ChevronDown className={`h-4 w-4 transition-transform ${specialtiesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${
+                    specialtiesOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
-              
+
               {specialtiesOpen && (
                 <div className="absolute top-full left-0 mt-1 w-[600px] bg-card rounded-xl shadow-healthcare-lg border border-border py-4 px-4 z-50 animate-fade-in">
                   <Link
@@ -176,13 +149,14 @@ const Header = () => {
                     View All Specialties →
                   </Link>
                   <div className="grid grid-cols-3 gap-1 max-h-80 overflow-y-auto">
-                    {specialties.map((specialty) => (
+                    {specialtiesData.map((specialty) => (
                       <Link
-                        key={specialty}
-                        to="/specialties"
-                        className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-accent rounded transition-colors"
+                        key={specialty.id}
+                        to={`/specialties/${specialty.id}`}
+                        className="block px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-accent rounded transition-colors flex items-center gap-2"
                       >
-                        {specialty}
+                        <specialty.icon className="w-4 h-4" />
+                        {specialty.title}
                       </Link>
                     ))}
                   </div>
@@ -193,22 +167,23 @@ const Header = () => {
             {/* Insurance */}
             <Link
               to="/insurance"
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                location.pathname === '/insurance'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+              className={`px-4 py-1 rounded-lg text-sm font-bold transition-colors leading-tight ${
+                location.pathname === "/insurance"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-[#06b6d4] hover:text-[#06b6d4]/80"
               }`}
             >
-              Insurance Affiliations
+              <span className="block">Insurance</span>
+              <span className="block">Affiliations</span>
             </Link>
 
             {/* Newsroom */}
             <Link
               to="/newsroom"
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                location.pathname === '/newsroom'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                location.pathname === "/newsroom"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
             >
               Newsroom
@@ -218,9 +193,9 @@ const Header = () => {
             <Link
               to="/contact"
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                location.pathname === '/contact'
-                  ? 'bg-accent text-accent-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                location.pathname === "/contact"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
             >
               Contact
@@ -228,10 +203,12 @@ const Header = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button variant="healthcare" size="lg">
-              Book Appointment
-            </Button>
+          <div className="hidden lg:flex items-center gap-4 ml-auto">
+            <Link to="/contact">
+              <Button className="bg-teal-500 hover:bg-teal-600 text-white font-bold h-12 px-8 text-base">
+                Book Appointment
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -255,9 +232,9 @@ const Header = () => {
                 to="/"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  location.pathname === '/'
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  location.pathname === "/"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
                 Home
@@ -270,7 +247,11 @@ const Header = () => {
                   className="w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-between"
                 >
                   Who We Are
-                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileWhoWeAreOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      mobileWhoWeAreOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
                 {mobileWhoWeAreOpen && (
                   <div className="ml-4 border-l-2 border-border pl-4 py-2 space-y-1">
@@ -295,11 +276,17 @@ const Header = () => {
               {/* Mobile Specialties */}
               <div>
                 <button
-                  onClick={() => setMobileSpecialtiesOpen(!mobileSpecialtiesOpen)}
+                  onClick={() =>
+                    setMobileSpecialtiesOpen(!mobileSpecialtiesOpen)
+                  }
                   className="w-full px-4 py-3 rounded-lg text-sm font-medium transition-colors text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-between"
                 >
                   Our Specialties
-                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileSpecialtiesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      mobileSpecialtiesOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
                 {mobileSpecialtiesOpen && (
                   <div className="ml-4 border-l-2 border-border pl-4 py-2 max-h-60 overflow-y-auto space-y-1">
@@ -310,17 +297,20 @@ const Header = () => {
                     >
                       View All Specialties
                     </Link>
-                    {specialties.slice(0, 10).map((specialty) => (
+                    {specialtiesData.map((specialty) => (
                       <Link
-                        key={specialty}
-                        to="/specialties"
+                        key={specialty.id}
+                        to={`/specialties/${specialty.id}`}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                        className="block py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
                       >
-                        {specialty}
+                        <specialty.icon className="w-4 h-4" />
+                        {specialty.title}
                       </Link>
                     ))}
-                    <span className="block py-1.5 text-xs text-primary">+ {specialties.length - 10} more...</span>
+                    <span className="block py-1.5 text-xs text-primary">
+                      + {specialtiesData.length > 10 ? specialtiesData.length - 10 : 0} more...
+                    </span>
                   </div>
                 )}
               </div>
@@ -329,9 +319,9 @@ const Header = () => {
                 to="/insurance"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  location.pathname === '/insurance'
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  location.pathname === "/insurance"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
                 Insurance Affiliations
@@ -341,9 +331,9 @@ const Header = () => {
                 to="/newsroom"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  location.pathname === '/newsroom'
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  location.pathname === "/newsroom"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
                 Newsroom
@@ -353,17 +343,19 @@ const Header = () => {
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  location.pathname === '/contact'
-                    ? 'bg-accent text-accent-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  location.pathname === "/contact"
+                    ? "bg-accent text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
                 Contact
               </Link>
-
-              <Button variant="healthcare" className="mt-4" size="lg">
-                Book Appointment
-              </Button>
+              
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="healthcare" className="mt-4 w-full" size="lg">
+                  Book Appointment
+                </Button>
+              </Link>
             </div>
           </div>
         )}

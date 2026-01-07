@@ -41,15 +41,28 @@ const About = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="healthcare-hero-gradient py-20">
-        <div className="healthcare-container text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary-foreground mb-6 animate-slide-up">
-            Who We Are
-          </h1>
-          <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            A legacy of healing, a commitment to excellence, and a passion for 
-            serving our community with compassionate healthcare.
-          </p>
+      {/* Hero Section */}
+      <section className="relative min-h-[500px] flex items-center">
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" 
+            alt="Hospital Team" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/80 via-teal-800/60 to-transparent mix-blend-multiply" />
+          <div className="absolute inset-0 bg-black/10" />
+        </div>
+        
+        <div className="healthcare-container relative z-10 py-20">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight animate-slide-up drop-shadow-lg">
+              Who We Are
+            </h1>
+            <p className="text-lg md:text-xl text-white mb-8 border-l-4 border-teal-300 pl-4 animate-slide-up drop-shadow-md" style={{ animationDelay: '0.1s' }}>
+              A legacy of healing, a commitment to excellence, and a passion for 
+              serving our community with compassionate healthcare.
+            </p>
+          </div>
         </div>
       </section>
 

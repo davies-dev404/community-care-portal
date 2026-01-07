@@ -1,21 +1,42 @@
 import { Shield, CheckCircle, Phone, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import nisLogo from '../assets/insurance/nis.png';
+import shaLogo from '../assets/insurance/sha.png';
+import muaLogo from '../assets/insurance/mua.png';
+import mtibaLogo from '../assets/insurance/mtiba.png';
+import minetLogo from '../assets/insurance/minet.png';
+import liaisonLogo from '../assets/insurance/liaison.png';
+import jubileeLogo from '../assets/insurance/jubilee.png';
 
 const insurancePartners = [
-  { name: 'BlueCross BlueShield' },
-  { name: 'Aetna Health' },
-  { name: 'United Healthcare' },
-  { name: 'Cigna' },
-  { name: 'Humana' },
-  { name: 'Kaiser Permanente' },
-  { name: 'Medicare' },
-  { name: 'Medicaid' },
-  { name: 'Tricare' },
-  { name: 'MetLife' },
-  { name: 'Anthem' },
-  { name: 'Oscar Health' },
+  { name: 'NIS', logo: nisLogo },
+  { name: 'SHA', logo: shaLogo },
+  { name: 'MUA', logo: muaLogo },
+  { name: 'm-tiba', logo: mtibaLogo },
+  { name: 'Minet', logo: minetLogo },
+  { name: 'LIAISON GROUP', logo: liaisonLogo },
+  { name: 'LiB' },
+  { name: 'KENYA REVENUE AUTHORITY' },
+  { name: 'Find Acrome' },
+  { name: 'Kenbright' },
+  { name: 'Jubilee', logo: jubileeLogo },
+  { name: 'Heritage' },
+  { name: 'GA Insurance' },
+  { name: 'First Assurance' },
+  { name: 'EQUITY' },
+  { name: 'THE MADHUPER INVESTMENT & FINANCE COMPANY LIMITED' },
+  { name: 'LIC GROUP' },
+  { name: 'Britam' },
+  { name: 'DIC GROUP' },
+  { name: 'TAKAFUL' },
+  { name: 'GLM MUTUAL' },
+  { name: 'Sedgwick' },
+  { name: 'POSTA' },
+  { name: 'PACIS' },
+  { name: 'PACIFIC' },
 ];
 
 const benefits = [
@@ -32,7 +53,7 @@ const benefits = [
   {
     icon: CheckCircle,
     title: 'Pre-Authorization Support',
-    description: 'We assist with pre-authorization requirements to ensure your treatments are covered before procedures.',
+    description: 'We assist with pre-authorization requirements to ensure you treatments are covered before procedures.',
   },
   {
     icon: Phone,
@@ -115,14 +136,26 @@ const Insurance = () => {
             {insurancePartners.map((partner, index) => (
               <div 
                 key={index} 
-                className="healthcare-card flex items-center justify-center py-8 px-6 text-center animate-scale-in"
+                className="healthcare-card flex items-center justify-center py-8 px-6 text-center animate-scale-in min-h-[160px]"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div>
-                  <div className="w-12 h-12 rounded-full bg-accent mx-auto mb-4 flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-accent-foreground" />
-                  </div>
-                  <p className="font-semibold text-foreground text-sm">{partner.name}</p>
+                <div className="w-full h-full flex flex-col items-center justify-center">
+                  {partner.logo ? (
+                    <div className="w-32 h-20 flex items-center justify-center">
+                      <img 
+                        src={partner.logo} 
+                        alt={partner.name} 
+                        className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300" 
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center mb-4">
+                         <Shield className="h-6 w-6 text-accent-foreground" />
+                      </div>
+                      <p className="font-semibold text-foreground text-sm">{partner.name}</p>
+                    </>
+                  )}
                 </div>
               </div>
             ))}
@@ -183,13 +216,17 @@ const Insurance = () => {
             Our patient services team is ready to help you understand your benefits and coverage options.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg">
-              <Phone className="h-5 w-5 mr-2" />
-              Call (555) 123-4567
-            </Button>
-            <Button variant="heroOutline" size="lg">
-              Send an Inquiry
-            </Button>
+            <a href="tel:+254758230000">
+              <Button variant="hero" size="lg">
+                <Phone className="h-5 w-5 mr-2" />
+                Call +254 758 230 000
+              </Button>
+            </a>
+            <Link to="/contact">
+              <Button variant="heroOutline" size="lg">
+                Send an Inquiry
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
