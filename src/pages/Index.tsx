@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Heart, Users, Award, Clock, Stethoscope, Baby, Eye, Siren, Brain, Scissors } from 'lucide-react';
+import { ArrowRight, Heart, Users, Award, Clock, Stethoscope, Baby, Siren, Brain, Scissors } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SpecialtyCard from '@/components/SpecialtyCard';
+import heroImage from '@/assets/hero-healthcare.jpg';
 
 const featuredSpecialties = [
   {
@@ -40,36 +41,40 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="healthcare-hero-gradient">
-          <div className="healthcare-container py-24 md:py-32">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-6 animate-slide-up">
-                Exceptional Care, <br />
-                <span className="opacity-90">Compassionate Hearts</span>
-              </h1>
-              <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                Your health is our priority. We combine advanced medical technology with 
-                personalized care to provide the best healthcare experience for you and your family.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                <Button variant="hero" size="xl">
-                  Book Appointment
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-                <Button variant="heroOutline" size="xl">
-                  Our Services
-                </Button>
-              </div>
-            </div>
-          </div>
+      {/* Hero Section with Background Image */}
+      <section className="relative overflow-hidden min-h-[600px] md:min-h-[700px]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroImage} 
+            alt="Healthcare professionals providing quality care" 
+            className="w-full h-full object-cover"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         </div>
         
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-          <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-background blur-3xl" />
-          <div className="absolute bottom-20 right-40 w-48 h-48 rounded-full bg-background blur-2xl" />
+        {/* Content */}
+        <div className="relative healthcare-container py-24 md:py-32 lg:py-40">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-6 animate-slide-up">
+              Exceptional Care, <br />
+              <span className="opacity-90">Compassionate Hearts</span>
+            </h1>
+            <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              Your health is our priority. We combine advanced medical technology with 
+              personalized care to provide the best healthcare experience for you and your family.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <Button variant="hero" size="xl">
+                Book Appointment
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+              <Button variant="heroOutline" size="xl">
+                Our Services
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
