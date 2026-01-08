@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,6 +20,8 @@ import Accessibility from "./pages/Accessibility.jsx";
 import NewsDetail from "./pages/NewsDetail.jsx";
 import Gallery from "./pages/Gallery.jsx";
 
+import Analytics from "@/components/Analytics";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,6 +30,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <Analytics />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />

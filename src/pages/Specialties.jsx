@@ -1,4 +1,4 @@
-import { Scissors, Brain, Eye, Siren, Baby, Stethoscope, Heart, Ear, Bone, Pill, Scan, Activity, Smile, Users, TestTube, Briefcase, Clock, Ambulance } from 'lucide-react';
+import { Scissors, Brain, Eye, Siren, Baby, Stethoscope, Heart, Ear, Bone, Pill, Scan, Smile, TestTube, Ambulance } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SpecialtyCard from '@/components/SpecialtyCard';
