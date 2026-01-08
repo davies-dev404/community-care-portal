@@ -1,10 +1,10 @@
-# St. Elizabeth Specialist Hospital - Community Care Portal
+# Hope Specialist Hospitals - Community Care Portal
 
-Welcome to the official repository for the St. Elizabeth Specialist Hospital (SESH) Community Care Portal. This application serves as a comprehensive digital interface for patients and the community to access healthcare services, information, and resources.
+Welcome to the official repository for the Hope Specialist Hospitals (HSH) Community Care Portal. This application serves as a comprehensive digital interface for patients and the community to access healthcare services, information, and resources.
 
 ## Project Overview
 
-The SESH Community Care Portal is designed to provide:
+The HSH Community Care Portal is designed to provide:
 
 - **Patient Information:** Detailed information about our doctors, specialties, and facilities.
 - **Appointment Booking:** Easy access to schedule appointments.
@@ -42,4 +42,4 @@ To run this project locally:
 
 ## License
 
-All rights reserved. © St. Elizabeth Specialist Hospital.
+All rights reserved. © Hope Specialist Hospitals.
