@@ -5,9 +5,9 @@ import logo from '../assets/logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#64748b] text-white pt-48 pb-8 font-sans relative">
+    <footer className="bg-[#64748b] text-white pt-16 md:pt-24 lg:pt-48 pb-8 font-sans relative">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16">
           {/* Column 1: Brand & Bio */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
