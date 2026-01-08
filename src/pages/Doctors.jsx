@@ -1,4 +1,4 @@
-import { Phone, Mail, Award } from 'lucide-react';
+import { Phone, Mail, Award, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -11,6 +11,7 @@ const doctors = [
     specialty: "Cardiology",
     qualifications: "MD, FACC",
     experience: "15+ years",
+    education: "Harvard Medical School",
     bio: "Specializing in interventional cardiology and heart failure management.",
   },
   {
@@ -18,6 +19,7 @@ const doctors = [
     specialty: "Neurology",
     qualifications: "MD, PhD",
     experience: "12+ years",
+    education: "Johns Hopkins University",
     bio: "Expertise in stroke management and neurodegenerative disorders.",
   },
   {
@@ -25,6 +27,7 @@ const doctors = [
     specialty: "Pediatrics",
     qualifications: "MD, FAAP",
     experience: "10+ years",
+    education: "University of Pennsylvania",
     bio: "Dedicated to comprehensive child healthcare from infancy through adolescence.",
   },
   {
@@ -32,6 +35,7 @@ const doctors = [
     specialty: "Orthopedics",
     qualifications: "MD, FAAOS",
     experience: "20+ years",
+    education: "Stanford University School of Medicine",
     bio: "Specialist in sports medicine and joint replacement surgery.",
   },
   {
@@ -39,6 +43,7 @@ const doctors = [
     specialty: "Obstetrics & Gynecology",
     qualifications: "MD, FACOG",
     experience: "14+ years",
+    education: "Yale School of Medicine",
     bio: "Providing compassionate care for women's health across all life stages.",
   },
   {
@@ -46,6 +51,7 @@ const doctors = [
     specialty: "General Surgery",
     qualifications: "MD, FACS",
     experience: "18+ years",
+    education: "Columbia University",
     bio: "Advanced laparoscopic and robotic surgical procedures.",
   },
   {
@@ -53,6 +59,7 @@ const doctors = [
     specialty: "Dermatology",
     qualifications: "MD, FAAD",
     experience: "8+ years",
+    education: "UCSF School of Medicine",
     bio: "Expert diagnosis and treatment of skin, hair, and nail conditions.",
   },
   {
@@ -60,6 +67,7 @@ const doctors = [
     specialty: "Internal Medicine",
     qualifications: "MD, FACP",
     experience: "11+ years",
+    education: "Baylor College of Medicine",
     bio: "Focusing on preventive care and complex disease management.",
   },
 ];
@@ -130,9 +138,15 @@ const Doctors = () => {
                 <p className="text-primary font-medium text-sm mb-2">{doctor.specialty}</p>
                 <p className="text-xs text-muted-foreground mb-3">{doctor.qualifications}</p>
                 
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <Award className="h-4 w-4 text-primary" />
-                  <span className="text-xs text-muted-foreground">{doctor.experience} experience</span>
+                <div className="flex items-center justify-center gap-4 mb-4 flex-wrap">
+                  <div className="flex items-center gap-1.5 px-2 py-1 bg-accent/50 rounded text-xs text-muted-foreground">
+                    <GraduationCap className="h-3.5 w-3.5" />
+                    <span>{doctor.education}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-2 py-1 bg-accent/50 rounded text-xs text-muted-foreground">
+                    <Award className="h-3.5 w-3.5 text-primary" />
+                    <span>{doctor.experience}</span>
+                  </div>
                 </div>
                 
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
