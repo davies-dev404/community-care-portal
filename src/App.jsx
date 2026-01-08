@@ -21,6 +21,7 @@ import NewsDetail from "./pages/NewsDetail.jsx";
 import Gallery from "./pages/Gallery.jsx";
 
 import Analytics from "@/components/Analytics";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Analytics />
         <Routes>
           <Route path="/" element={<Index />} />

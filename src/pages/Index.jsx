@@ -15,6 +15,7 @@ import heroImage from '../assets/hero.png';
 import teamImg from '../assets/team.png';
 import careImg from '../assets/care.png';
 import { newsItems } from '@/data/newsData';
+import ScrollAnimation from '@/components/ScrollAnimation';
 
 // Insurance Logos
 import nisLogo from '../assets/insurance/nis.png';
@@ -133,24 +134,26 @@ const Index = () => {
         </div>
         
         <div className="healthcare-container relative z-10 py-20">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
-              Providing exceptional <br />
-              <span className="text-teal-300 drop-shadow-md">healthcare services</span> to <br />
-              our community
-            </h1>
-            <p className="text-lg md:text-xl text-white mb-8 border-l-4 border-teal-300 pl-4 drop-shadow-md">
-              Our vision is to be the foremost healthcare provider in the region, recognized for excellence in patient care, medical education, and research.
-            </p>
-            <div>
-              <Link to="/contact">
-                <Button size="xl" className="group text-lg px-8">
-                  We are here to assist you.
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+          <ScrollAnimation animation="fade-up">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                Providing exceptional <br />
+                <span className="text-teal-300 drop-shadow-md">healthcare services</span> to <br />
+                our community
+              </h1>
+              <p className="text-lg md:text-xl text-white mb-8 border-l-4 border-teal-300 pl-4 drop-shadow-md">
+                Our vision is to be the foremost healthcare provider in the region, recognized for excellence in patient care, medical education, and research.
+              </p>
+              <div>
+                <Link to="/contact">
+                  <Button size="xl" className="group text-lg px-8 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    We are here to assist you.
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -159,56 +162,64 @@ const Index = () => {
         <div className="healthcare-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Box 1 */}
-            <Link to="/contact" className="group">
-              <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
-                  <Calendar className="w-8 h-8 text-primary group-hover:text-white" />
+            <ScrollAnimation delay={0} className="h-full">
+              <Link to="/contact" className="group h-full block">
+                <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
+                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
+                    <Calendar className="w-8 h-8 text-primary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">Book Your Next Appointment</h3>
+                    <p className="text-muted-foreground group-hover:text-white/90 text-sm">Schedule your visit at HOPE with ease online.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">Book Your Next Appointment</h3>
-                  <p className="text-muted-foreground group-hover:text-white/90 text-sm">Schedule your visit at HOPE with ease online.</p>
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollAnimation>
 
             {/* Box 2 */}
-            <div className="group">
-              <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
-                  <Pill className="w-8 h-8 text-primary group-hover:text-white" />
-                </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">Order Medication Online</h3>
-                  <p className="text-muted-foreground group-hover:text-white/90 text-sm">Convenient, safe, and quick online medication orders.</p>
+            <ScrollAnimation delay={100} className="h-full">
+              <div className="group h-full">
+                <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
+                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
+                    <Pill className="w-8 h-8 text-primary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">Order Medication Online</h3>
+                    <p className="text-muted-foreground group-hover:text-white/90 text-sm">Convenient, safe, and quick online medication orders.</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollAnimation>
 
             {/* Box 3 */}
-            <Link to="/insurance" className="group">
-              <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
-                  <ShieldCheck className="w-8 h-8 text-primary group-hover:text-white" />
+            <ScrollAnimation delay={200} className="h-full">
+              <Link to="/insurance" className="group h-full block">
+                <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
+                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
+                    <ShieldCheck className="w-8 h-8 text-primary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">Trusted Insurance Affiliations</h3>
+                    <p className="text-muted-foreground group-hover:text-white/90 text-sm">Seamless coverage with trusted insurance partners at HOPE.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">Trusted Insurance Affiliations</h3>
-                  <p className="text-muted-foreground group-hover:text-white/90 text-sm">Seamless coverage with trusted insurance partners at HOPE.</p>
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollAnimation>
 
             {/* Box 4 */}
-            <Link to="/newsroom" className="group">
-              <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
-                <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
-                  <Newspaper className="w-8 h-8 text-primary group-hover:text-white" />
+            <ScrollAnimation delay={300} className="h-full">
+              <Link to="/newsroom" className="group h-full block">
+                <div className="bg-card hover:bg-primary transition-colors duration-300 p-8 rounded-xl shadow-lg border border-border/50 h-full flex flex-col items-start gap-4 group-hover:border-primary/20">
+                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-white/20">
+                    <Newspaper className="w-8 h-8 text-primary group-hover:text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">News and Events</h3>
+                    <p className="text-muted-foreground group-hover:text-white/90 text-sm">Stay updated on HSH&apos;s latest news and health events.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-serif font-bold text-xl mb-2 group-hover:text-white">News and Events</h3>
-                  <p className="text-muted-foreground group-hover:text-white/90 text-sm">Stay updated on HSH&apos;s latest news and health events.</p>
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -217,37 +228,41 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="healthcare-container">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Our Commitment</span>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-foreground">
-                Why Choose Hope Specialist Hospitals- HSH
-              </h2>
-            </div>
+            <ScrollAnimation animation="fade-right">
+              <div>
+                <span className="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Our Commitment</span>
+                <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-foreground">
+                  Why Choose Hope Specialist Hospitals- HSH
+                </h2>
+              </div>
+            </ScrollAnimation>
             
-            <div className="bg-card rounded-2xl shadow-sm p-8 border border-border/50">
-              <Tabs defaultValue="mission" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 mb-8">
-                  <TabsTrigger value="mission">Our Mission</TabsTrigger>
-                  <TabsTrigger value="vision">Our Vision</TabsTrigger>
-                  <TabsTrigger value="values">Our Values</TabsTrigger>
-                </TabsList>
-                <TabsContent value="mission" className="animate-in fade-in slide-in-from-bottom-2">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    To bring healthcare of international standards within the reach of every individual. We are committed to the achievement and maintenance of excellence in healthcare for the benefit of humanity and for prosperity.
-                  </p>
-                </TabsContent>
-                <TabsContent value="vision" className="animate-in fade-in slide-in-from-bottom-2">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    Our vision is to &apos;Touch every Life positively&apos;.
-                  </p>
-                </TabsContent>
-                <TabsContent value="values" className="animate-in fade-in slide-in-from-bottom-2">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    HOPE (Healing, Optimism, Professionalism, Excellence). These are the VALUES that our organization uses to fulfil our care mission to provide excellence services to our community.
-                  </p>
-                </TabsContent>
-              </Tabs>
-            </div>
+            <ScrollAnimation animation="fade-left" delay={200}>
+              <div className="bg-card rounded-2xl shadow-sm p-8 border border-border/50">
+                <Tabs defaultValue="mission" className="w-full">
+                  <TabsList className="grid w-full grid-cols-3 mb-8">
+                    <TabsTrigger value="mission">Our Mission</TabsTrigger>
+                    <TabsTrigger value="vision">Our Vision</TabsTrigger>
+                    <TabsTrigger value="values">Our Values</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="mission" className="animate-in fade-in slide-in-from-bottom-2">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      To bring healthcare of international standards within the reach of every individual. We are committed to the achievement and maintenance of excellence in healthcare for the benefit of humanity and for prosperity.
+                    </p>
+                  </TabsContent>
+                  <TabsContent value="vision" className="animate-in fade-in slide-in-from-bottom-2">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Our vision is to &apos;Touch every Life positively&apos;.
+                    </p>
+                  </TabsContent>
+                  <TabsContent value="values" className="animate-in fade-in slide-in-from-bottom-2">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      HOPE (Healing, Optimism, Professionalism, Excellence). These are the VALUES that our organization uses to fulfil our care mission to provide excellence services to our community.
+                    </p>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -257,25 +272,27 @@ const Index = () => {
         <div className="healthcare-container">
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((item, i) => (
-              <Link to={item.link} key={i} className="group relative overflow-hidden rounded-2xl h-[400px] bg-accent block cursor-pointer">
-                {/* Image Background */}
-                <div className="absolute inset-0">
-                  <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
-                
-                <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
-                  <h3 className="text-2xl font-serif font-bold mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-white/90 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                    {item.desc}
-                  </p>
-                  <Button variant="link" className="text-white p-0 h-auto justify-start mt-4 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
-                    Read more <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </div>
-              </Link>
+              <ScrollAnimation key={i} delay={i * 100}>
+                <Link to={item.link} className="group relative overflow-hidden rounded-2xl h-[400px] bg-accent block cursor-pointer">
+                  {/* Image Background */}
+                  <div className="absolute inset-0">
+                    <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  </div>
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+                  
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
+                    <h3 className="text-2xl font-serif font-bold mb-2 transform transition-transform duration-300 group-hover:-translate-y-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/90 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75">
+                      {item.desc}
+                    </p>
+                    <Button variant="link" className="text-white p-0 h-auto justify-start mt-4 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-100">
+                      Read more <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </div>
+                </Link>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -413,12 +430,12 @@ const Index = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {insurancePartners.map((partner, i) => (
-              <div key={i} className="bg-white p-4 h-24 rounded flex flex-col items-center justify-center gap-2 transition-all duration-300 group hover:scale-105">
+              <div key={i} className="bg-white p-4 h-24 rounded flex flex-col items-center justify-center gap-2 transition-all duration-300 group hover:scale-105 hover:shadow-lg cursor-pointer">
                  {partner.logo ? (
-                    <img src={partner.logo} alt={partner.name} loading="lazy" className="max-w-full max-h-full object-contain" />
+                    <img src={partner.logo} alt={partner.name} loading="lazy" className="max-w-full max-h-full object-contain transition-all duration-300" />
                  ) : (
                     <>
-                      <ShieldCheck className="w-6 h-6 text-teal-600 opacity-50 group-hover:opacity-100" />
+                      <ShieldCheck className="w-6 h-6 text-teal-600 opacity-50 group-hover:opacity-100 transition-opacity" />
                       <span className="text-black font-bold text-center uppercase text-[0.65rem] md:text-xs tracking-wide leading-tight">{partner.name}</span>
                     </>
                  )}
@@ -601,28 +618,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* News and Events (Kept from original but styled) */}
-      <section className="py-20 bg-[#121212] text-white border-t border-white/5">
-        <div className="healthcare-container text-center">
-            <span className="text-cyan-400 font-bold uppercase tracking-widest text-sm mb-2 block">Latest News</span>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-12">News and Events</h2>
-            <p className="text-white/60 mb-12 max-w-2xl mx-auto">Stay updated with the latest hospital news, events, patient care advancements, and community programs.</p>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-               {newsItems.slice(0, 3).map((item, index) => (
-                 <Link to={`/news/${item.id}`} key={index} className="group cursor-pointer text-left block">
-                    <div className="overflow-hidden rounded-xl mb-4 aspect-[4/3] relative">
-                       <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    </div>
-                    <div className="text-teal-400 text-xs font-bold mb-2 uppercase tracking-wider">{item.date}</div>
-                    <h3 className="text-xl font-bold mb-2 text-white group-hover:text-teal-400 transition-colors line-clamp-2">{item.title}</h3>
-                    <p className="text-white/60 line-clamp-2 text-sm">{item.excerpt}</p>
-                 </Link>
-               ))}
-            </div>
-        </div>
-      </section>
+      {/* News and Events - Only show if there are news items */}
+      {newsItems.length > 0 && (
+        <section className="py-20 bg-[#121212] text-white border-t border-white/5">
+          <div className="healthcare-container text-center">
+              <span className="text-cyan-400 font-bold uppercase tracking-widest text-sm mb-2 block">Latest News</span>
+              <h2 className="text-3xl md:text-5xl font-serif font-bold mb-12">News and Events</h2>
+              <p className="text-white/60 mb-12 max-w-2xl mx-auto">Stay updated with the latest hospital news, events, patient care advancements, and community programs.</p>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                {newsItems.slice(0, 3).map((item, index) => (
+                  <Link to={`/news/${item.id}`} key={index} className="group cursor-pointer text-left block">
+                      <div className="overflow-hidden rounded-xl mb-4 aspect-[4/3] relative">
+                        <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      </div>
+                      <div className="text-teal-400 text-xs font-bold mb-2 uppercase tracking-wider">{item.date}</div>
+                      <h3 className="text-xl font-bold mb-2 text-white group-hover:text-teal-400 transition-colors line-clamp-2">{item.title}</h3>
+                      <p className="text-white/60 line-clamp-2 text-sm">{item.excerpt}</p>
+                  </Link>
+                ))}
+              </div>
+          </div>
+        </section>
+      )}
 
       {/* Callback Form Section (Floating Overlap) */}
       <section className="relative z-20 lg:-mb-24">

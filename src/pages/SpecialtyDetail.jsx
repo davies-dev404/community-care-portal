@@ -95,7 +95,8 @@ const SpecialtyDetail = () => {
               <img 
                 src={specialty.image} 
                 alt={specialty.title} 
-                className={`w-full h-auto object-cover max-h-[500px] transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                loading="eager"
+                className={`w-full h-auto object-cover max-h-[500px] transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                 onLoad={() => setImageLoaded(true)}
               />
             </div>
@@ -143,7 +144,7 @@ const SpecialtyDetail = () => {
               <h3 className="text-xl font-serif font-bold mb-6 pb-4 border-b relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-0.5 after:bg-primary">
                 Services
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
                 {specialtiesData.map((spec) => (
                   <li key={spec.id}>
                     <Link 

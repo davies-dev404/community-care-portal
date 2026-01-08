@@ -79,16 +79,16 @@ const Insurance = () => {
             {insurancePartners.map((partner, index) => (
               <div 
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center border border-slate-100 min-h-[120px] group hover:-translate-y-1"
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center border border-slate-100 min-h-[120px] group hover:-translate-y-2 hover:scale-105 cursor-default"
               >
                 {partner.logo ? (
                    <img 
                      src={partner.logo} 
                      alt={partner.name} 
-                     className="max-w-full max-h-20 object-contain transition-all duration-300"
+                     className="max-w-full max-h-20 object-contain transition-all duration-300 group-hover:scale-110"
                    />
                 ) : (
-                   <span className="text-slate-700 font-semibold text-center text-sm md:text-base px-2">
+                   <span className="text-slate-700 font-semibold text-center text-sm md:text-base px-2 group-hover:text-[#1e3a8a] transition-colors">
                      {partner.name}
                    </span>
                 )}
