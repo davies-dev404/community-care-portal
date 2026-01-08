@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -78,6 +79,33 @@ const galleryImages = [
   }
 ];
 
+const GalleryImage = ({ image, categoryLabel }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <div className="group relative overflow-hidden rounded-2xl shadow-md bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="aspect-[4/3] overflow-hidden relative bg-muted">
+        {!imageLoaded && (
+           <Skeleton className="absolute inset-0 w-full h-full" />
+        )}
+        <img 
+          src={image.src} 
+          alt={image.title} 
+          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <span className="text-[#06b6d4] text-xs font-bold uppercase tracking-wider mb-2">
+            {categoryLabel}
+          </span>
+          <h3 className="text-white font-bold text-xl mb-1">{image.title}</h3>
+          <p className="text-white/80 text-sm">{image.description}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Gallery = () => {
   const [activeTab, setActiveTab] = useState("all");
 
@@ -117,22 +145,11 @@ const Gallery = () => {
             <TabsContent value={activeTab} className="mt-0 animate-in fade-in zoom-in-95 duration-300">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredImages.map((image, index) => (
-                  <div key={index} className="group relative overflow-hidden rounded-2xl shadow-md bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img 
-                        src={image.src} 
-                        alt={image.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                        <span className="text-[#06b6d4] text-xs font-bold uppercase tracking-wider mb-2">
-                          {galleryCategories.find(c => c.id === image.category)?.label}
-                        </span>
-                        <h3 className="text-white font-bold text-xl mb-1">{image.title}</h3>
-                        <p className="text-white/80 text-sm">{image.description}</p>
-                      </div>
-                    </div>
-                  </div>
+                  <GalleryImage 
+                    key={index} 
+                    image={image} 
+                    categoryLabel={galleryCategories.find(c => c.id === image.category)?.label}
+                  />
                 ))}
               </div>
             </TabsContent>

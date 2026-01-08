@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { ArrowRight, Phone, Calendar, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { specialtiesData } from '@/data/specialtiesData';
@@ -17,6 +18,7 @@ import {
 const SpecialtyDetail = () => {
   const { slug } = useParams();
   const specialty = specialtiesData.find(s => s.id === slug);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -81,11 +83,15 @@ const SpecialtyDetail = () => {
             </div>
 
             {/* Featured Image */}
-            <div className="rounded-2xl overflow-hidden mb-12 shadow-healthcare-lg">
+            <div className="rounded-2xl overflow-hidden mb-12 shadow-healthcare-lg relative min-h-[300px] bg-muted">
+              {!imageLoaded && (
+                <Skeleton className="absolute inset-0 w-full h-full" />
+              )}
               <img 
                 src={specialty.image} 
                 alt={specialty.title} 
-                className="w-full h-auto object-cover max-h-[500px]"
+                className={`w-full h-auto object-cover max-h-[500px] transition-opacity duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoad={() => setImageLoaded(true)}
               />
             </div>
 
