@@ -21,6 +21,7 @@ const Newsroom = () => {
           <img 
             src={facilityImg} 
             alt="Newsroom" 
+            fetchPriority="high"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-teal-900/80 via-teal-800/60 to-transparent mix-blend-multiply" />
@@ -99,7 +100,7 @@ const Newsroom = () => {
             {regularNews.map((item, index) => (
               <article key={index} className="healthcare-card group cursor-pointer flex flex-col h-full">
                 <div className="aspect-video bg-accent rounded-lg mb-5 overflow-hidden">
-                   <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                   <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex items-center gap-3 mb-3">
                   <span className="px-2 py-1 bg-accent text-accent-foreground text-xs font-medium rounded">

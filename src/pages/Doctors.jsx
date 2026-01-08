@@ -7,67 +7,67 @@ import teamImg from '../assets/team.png';
 
 const doctors = [
   {
-    name: "Dr. Sarah Johnson",
+    name: "Dr. Achieng Odhiambo",
     specialty: "Cardiology",
-    qualifications: "MD, FACC",
+    qualifications: "MBChB, MMed, FACC",
     experience: "15+ years",
-    education: "Harvard Medical School",
+    education: "University of Nairobi & Harvard Medical School",
     bio: "Specializing in interventional cardiology and heart failure management.",
   },
   {
-    name: "Dr. Michael Chen",
+    name: "Dr. Kamau Njoroge",
     specialty: "Neurology",
     qualifications: "MD, PhD",
     experience: "12+ years",
-    education: "Johns Hopkins University",
+    education: "Moi University & Johns Hopkins University",
     bio: "Expertise in stroke management and neurodegenerative disorders.",
   },
   {
-    name: "Dr. Emily Davis",
+    name: "Dr. Wanjiku Kimani",
     specialty: "Pediatrics",
-    qualifications: "MD, FAAP",
+    qualifications: "MBChB, FAAP",
     experience: "10+ years",
-    education: "University of Pennsylvania",
+    education: "Kenyatta University & University of Pennsylvania",
     bio: "Dedicated to comprehensive child healthcare from infancy through adolescence.",
   },
   {
-    name: "Dr. James Wilson",
+    name: "Dr. Omondi Otieno",
     specialty: "Orthopedics",
     qualifications: "MD, FAAOS",
     experience: "20+ years",
-    education: "Stanford University School of Medicine",
+    education: "University of Nairobi & Stanford University",
     bio: "Specialist in sports medicine and joint replacement surgery.",
   },
   {
-    name: "Dr. Lisa Anderson",
+    name: "Dr. Zainab Ahmed",
     specialty: "Obstetrics & Gynecology",
-    qualifications: "MD, FACOG",
+    qualifications: "MBChB, MMed",
     experience: "14+ years",
-    education: "Yale School of Medicine",
+    education: "Aga Khan University & Yale School of Medicine",
     bio: "Providing compassionate care for women's health across all life stages.",
   },
   {
-    name: "Dr. Robert Taylor",
+    name: "Dr. Juma Wanyama",
     specialty: "General Surgery",
     qualifications: "MD, FACS",
     experience: "18+ years",
-    education: "Columbia University",
+    education: "Moi University & Columbia University",
     bio: "Advanced laparoscopic and robotic surgical procedures.",
   },
   {
-    name: "Dr. David Miller",
+    name: "Dr. Muthoni Mwangi",
     specialty: "Dermatology",
-    qualifications: "MD, FAAD",
+    qualifications: "MBChB, FAAD",
     experience: "8+ years",
-    education: "UCSF School of Medicine",
+    education: "University of Nairobi & UCSF",
     bio: "Expert diagnosis and treatment of skin, hair, and nail conditions.",
   },
   {
-    name: "Dr. Jennifer Martinez",
+    name: "Dr. Kiprop Koech",
     specialty: "Internal Medicine",
     qualifications: "MD, FACP",
     experience: "11+ years",
-    education: "Baylor College of Medicine",
+    education: "Egerton University & Baylor College of Medicine",
     bio: "Focusing on preventive care and complex disease management.",
   },
 ];
@@ -83,6 +83,7 @@ const Doctors = () => {
           <img 
             src={teamImg} 
             alt="Medical Team" 
+            fetchPriority="high"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-teal-900/90 via-teal-800/75 to-transparent/20 mix-blend-multiply" />

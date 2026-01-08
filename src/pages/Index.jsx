@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowRight, Calendar, Pill, ShieldCheck, Newspaper, HeartHandshake, Lightbulb, ScrollText, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -102,17 +104,24 @@ const Index = () => {
     }
   ];
 
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
   return (
     <div className="min-h-screen bg-background font-sans">
       <Header />
 
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center">
-        <div className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 w-full h-full bg-muted">
+           {!heroLoaded && (
+              <Skeleton className="absolute inset-0 w-full h-full" />
+           )}
           <img 
             src={heroImage} 
             alt="Modern Hospital Building" 
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            fetchPriority="high" // Prioritize LCP
+            onLoad={() => setHeroLoaded(true)}
+            className={`w-full h-full object-cover transition-opacity duration-700 ${heroLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-teal-900/80 via-teal-800/60 to-transparent mix-blend-multiply" />
           <div className="absolute inset-0 bg-black/10" />
@@ -246,7 +255,7 @@ const Index = () => {
               <Link to={item.link} key={i} className="group relative overflow-hidden rounded-2xl h-[400px] bg-accent block cursor-pointer">
                 {/* Image Background */}
                 <div className="absolute inset-0">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
                 
@@ -401,7 +410,7 @@ const Index = () => {
             {insurancePartners.map((partner, i) => (
               <div key={i} className="bg-white p-4 h-24 rounded flex flex-col items-center justify-center gap-2 transition-all duration-300 group hover:scale-105">
                  {partner.logo ? (
-                    <img src={partner.logo} alt={partner.name} className="max-w-full max-h-full object-contain" />
+                    <img src={partner.logo} alt={partner.name} loading="lazy" className="max-w-full max-h-full object-contain" />
                  ) : (
                     <>
                       <ShieldCheck className="w-6 h-6 text-teal-600 opacity-50 group-hover:opacity-100" />
@@ -458,7 +467,7 @@ const Index = () => {
             <div className="relative aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                 {/* Simulated Youtube Embed/Player */}
                 <div className="absolute inset-0 bg-black">
-                   <img src={heroImage} alt="AI Scan" className="w-full h-full object-cover opacity-60" />
+                   <img src={heroImage} alt="AI Scan" loading="lazy" className="w-full h-full object-cover opacity-60" />
                    
                    {/* AI Scanner Animation */}
                    <div className="absolute inset-0 overflow-hidden">
@@ -524,10 +533,10 @@ const Index = () => {
               </div>
               <div className="flex gap-4 h-[500px]">
                  <div className="w-1/2 h-full rounded-2xl overflow-hidden">
-                    <img src={careImg} alt="Doctor" className="w-full h-full object-cover" />
+                    <img src={careImg} alt="Doctor" loading="lazy" className="w-full h-full object-cover" />
                  </div>
                  <div className="w-1/2 h-full rounded-2xl overflow-hidden">
-                    <img src={teamImg} alt="Patient Care" className="w-full h-full object-cover" />
+                    <img src={teamImg} alt="Patient Care" loading="lazy" className="w-full h-full object-cover" />
                  </div>
               </div>
            </div>
@@ -598,7 +607,7 @@ const Index = () => {
                {newsItems.slice(0, 3).map((item, index) => (
                  <Link to={`/news/${item.id}`} key={index} className="group cursor-pointer text-left block">
                     <div className="overflow-hidden rounded-xl mb-4 aspect-[4/3] relative">
-                       <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                       <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     </div>
                     <div className="text-teal-400 text-xs font-bold mb-2 uppercase tracking-wider">{item.date}</div>
@@ -611,7 +620,7 @@ const Index = () => {
       </section>
 
       {/* Callback Form Section (Floating Overlap) */}
-      <section className="relative z-20 -mb-24">
+      <section className="relative z-20 lg:-mb-24">
          <div className="healthcare-container">
             <div className="bg-[#004d40] text-white rounded-3xl overflow-hidden shadow-2xl grid lg:grid-cols-2">
                <div className="p-12 lg:p-24 flex flex-col justify-center">
@@ -637,6 +646,7 @@ const Index = () => {
                   <img 
                     src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2664&auto=format&fit=crop" 
                     alt="Doctor" 
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#004d40]/90 via-[#004d40]/40 to-transparent lg:w-1/3"></div>
