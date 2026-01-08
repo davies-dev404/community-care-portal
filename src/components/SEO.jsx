@@ -13,6 +13,7 @@ const SEO = ({ title, description, keywords, image }) => {
       <meta name="description" content={description || defaultDescription} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="google-site-verification" content="K3tyeQb5qs4t6mrjxytSj80FvaoI69hmo6L7qEEN9x4" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
