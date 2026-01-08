@@ -76,9 +76,15 @@ const specialties = [
   },
 ];
 
+import SEO from '@/components/SEO';
+
 const Specialties = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Our Specialties"
+        description="Explore our wide range of medical specialties including Cardiology, Neurology, Pediatrics, and Surgery at Hope Specialist Hospitals."
+      />
       <Header />
 
       {/* Hero Section */}

@@ -1,5 +1,6 @@
 import { Phone, Mail, Award, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -75,6 +76,10 @@ const doctors = [
 const Doctors = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Medical Team"
+        description="Meet our team of board-certified specialists at Hope Specialist Hospitals (HSH). Expert care in Cardiology, Neurology, Pediatrics, and more."
+      />
       <Header />
 
       {/* Hero Section */}

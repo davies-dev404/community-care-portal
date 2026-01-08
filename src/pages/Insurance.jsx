@@ -55,9 +55,15 @@ const insurancePartners = [
   { name: "PACIFIC", logo: pacificLogo }
 ];
 
+import SEO from '@/components/SEO';
+
 const Insurance = () => {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
+      <SEO 
+        title="Insurance Partners"
+        description="View our accepted insurance partners at Hope Specialist Hospitals. We work with NHIF, Jubilee, AAR, and many others to ensure seamless coverage."
+      />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <div className="container mx-auto px-4 md:px-6">

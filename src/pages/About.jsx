@@ -35,9 +35,15 @@ const milestones = [
   { year: "2024", event: "Celebrating nearly 40 years of community healthcare" },
 ];
 
+import SEO from '@/components/SEO';
+
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="About Us"
+        description="Learn about Hope Specialist Hospitals (HSH), our history of compassionate care, our mission, vision, and the core values that drive us."
+      />
       <Header />
 
       {/* Hero Section */}

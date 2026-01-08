@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -30,6 +31,10 @@ const SpecialtyDetail = () => {
 
   return (
     <div className="min-h-screen bg-background font-sans">
+      <SEO 
+        title={specialty.title}
+        description={specialty.shortDescription || `Specialized ${specialty.title} care services at Hope Specialist Hospitals.`}
+      />
       <Header />
 
       {/* Breadcrumb Section - Custom styled to match theme */}

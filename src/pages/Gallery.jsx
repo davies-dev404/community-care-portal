@@ -106,6 +106,8 @@ const GalleryImage = ({ image, categoryLabel }) => {
   );
 };
 
+import SEO from '@/components/SEO';
+
 const Gallery = () => {
   const [activeTab, setActiveTab] = useState("all");
 
@@ -115,6 +117,10 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
+      <SEO 
+        title="Our Gallery"
+        description="Explore photos of Hope Specialist Hospitals facilities, medical team, advanced equipment, and community events."
+      />
       <Header />
       
       <main className="pt-24 pb-20">

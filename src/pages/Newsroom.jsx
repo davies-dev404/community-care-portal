@@ -7,12 +7,18 @@ import { newsItems } from '@/data/newsData';
 
 import facilityImg from '../assets/facility.png';
 
+import SEO from '@/components/SEO';
+
 const Newsroom = () => {
   const featuredNews = newsItems.find(item => item.featured);
   const regularNews = newsItems.filter(item => !item.featured);
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Newsroom"
+        description="Latest news, updates, and health insights from Hope Specialist Hospitals (HSH). Stay informed about our community impact."
+      />
       <Header />
 
       {/* Hero Section */}

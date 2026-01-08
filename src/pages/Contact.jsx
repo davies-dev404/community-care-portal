@@ -28,9 +28,15 @@ const contactInfo = [
   },
 ];
 
+import SEO from '@/components/SEO';
+
 const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Hope Specialist Hospitals (HSH). Book appointments, find our location in Busia, or contact our emergency services."
+      />
       <Header />
 
       {/* Hero Section */}

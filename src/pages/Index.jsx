@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Skeleton } from "@/components/ui/skeleton";
+import SEO from '@/components/SEO';
 import { ArrowRight, Calendar, Pill, ShieldCheck, Newspaper, HeartHandshake, Lightbulb, ScrollText, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -108,6 +109,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background font-sans">
+      <SEO 
+        title="Home"
+        description="Hope Specialist Hospitals (HSH) provides exceptional healthcare, advanced diagnostics, and compassionate patient care in Busia, Kenya."
+      />
       <Header />
 
       {/* Hero Section */}
